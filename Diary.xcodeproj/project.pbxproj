@@ -23,6 +23,7 @@
 		28266A2219615D4F0012A12A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 28266A2019615D4F0012A12A /* InfoPlist.strings */; };
 		28266A2419615D4F0012A12A /* DiaryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 28266A2319615D4F0012A12A /* DiaryTests.m */; };
 		28266A2F1962035B0012A12A /* STCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 28266A2E1962035B0012A12A /* STCoreDataStack.m */; };
+		28266A35196208530012A12A /* STDiaryEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 28266A34196208530012A12A /* STDiaryEntry.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		28266A2319615D4F0012A12A /* DiaryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiaryTests.m; sourceTree = "<group>"; };
 		28266A2D1962035B0012A12A /* STCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCoreDataStack.h; sourceTree = "<group>"; };
 		28266A2E1962035B0012A12A /* STCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCoreDataStack.m; sourceTree = "<group>"; };
+		28266A33196208530012A12A /* STDiaryEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STDiaryEntry.h; sourceTree = "<group>"; };
+		28266A34196208530012A12A /* STDiaryEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STDiaryEntry.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +127,8 @@
 				28266A2E1962035B0012A12A /* STCoreDataStack.m */,
 				28266A0F19615D4F0012A12A /* Images.xcassets */,
 				28266A0C19615D4F0012A12A /* Diary.xcdatamodeld */,
+				28266A33196208530012A12A /* STDiaryEntry.h */,
+				28266A34196208530012A12A /* STDiaryEntry.m */,
 				28266A0119615D4F0012A12A /* Supporting Files */,
 			);
 			path = Diary;
@@ -258,6 +263,7 @@
 				28266A0E19615D4F0012A12A /* Diary.xcdatamodeld in Sources */,
 				28266A0719615D4F0012A12A /* main.m in Sources */,
 				28266A0B19615D4F0012A12A /* STAppDelegate.m in Sources */,
+				28266A35196208530012A12A /* STDiaryEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
