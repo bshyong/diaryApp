@@ -22,6 +22,7 @@
 		28266A1A19615D4F0012A12A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 282669FE19615D4F0012A12A /* CoreData.framework */; };
 		28266A2219615D4F0012A12A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 28266A2019615D4F0012A12A /* InfoPlist.strings */; };
 		28266A2419615D4F0012A12A /* DiaryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 28266A2319615D4F0012A12A /* DiaryTests.m */; };
+		28266A2F1962035B0012A12A /* STCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 28266A2E1962035B0012A12A /* STCoreDataStack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		28266A1F19615D4F0012A12A /* DiaryTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DiaryTests-Info.plist"; sourceTree = "<group>"; };
 		28266A2119615D4F0012A12A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		28266A2319615D4F0012A12A /* DiaryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiaryTests.m; sourceTree = "<group>"; };
+		28266A2D1962035B0012A12A /* STCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCoreDataStack.h; sourceTree = "<group>"; };
+		28266A2E1962035B0012A12A /* STCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCoreDataStack.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 			children = (
 				28266A0919615D4F0012A12A /* STAppDelegate.h */,
 				28266A0A19615D4F0012A12A /* STAppDelegate.m */,
+				28266A2D1962035B0012A12A /* STCoreDataStack.h */,
+				28266A2E1962035B0012A12A /* STCoreDataStack.m */,
 				28266A0F19615D4F0012A12A /* Images.xcassets */,
 				28266A0C19615D4F0012A12A /* Diary.xcdatamodeld */,
 				28266A0119615D4F0012A12A /* Supporting Files */,
@@ -249,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28266A2F1962035B0012A12A /* STCoreDataStack.m in Sources */,
 				28266A0E19615D4F0012A12A /* Diary.xcdatamodeld in Sources */,
 				28266A0719615D4F0012A12A /* main.m in Sources */,
 				28266A0B19615D4F0012A12A /* STAppDelegate.m in Sources */,
