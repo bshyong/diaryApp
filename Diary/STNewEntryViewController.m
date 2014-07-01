@@ -7,6 +7,8 @@
 //
 
 #import "STNewEntryViewController.h"
+#import "STDiaryEntry.h"
+#import "STCoreDataStack.h"
 
 @interface STNewEntryViewController ()
 
@@ -39,7 +41,20 @@
   [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)insertDiaryEntry{
+  STCoreDataStack *coreDataStack = [STCoreDataStack defaultStack];
+  STDiaryEntry *entry = [NSEntityDescription insertNewObjectForEntityForName:@"STDiaryEntry" inManagedObjectContext:coreDataStack.managedObjectContext];
+  entry.body = self.textField.text;
+  // need to calculate seconds since 1970 because
+  // we are storing as scalar entries
+  entry.date = [[NSDate date] timeIntervalSince1970];
+  [coreDataStack saveContext];
+  
+}
+
+
 - (IBAction)doneWasPressed:(id)sender {
+  [self insertDiaryEntry];
   [self dismissSelf];
 }
 

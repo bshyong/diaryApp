@@ -22,5 +22,6 @@ NS_ENUM(int16_t, STDiaryEntryMood){
 @property (nonatomic, retain) NSData * imageData;
 @property (nonatomic) int16_t mood;
 @property (nonatomic, retain) NSString * location;
+@property (nonatomic, readonly) NSString *sectionName;
 
 @end

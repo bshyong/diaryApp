@@ -1,5 +1,5 @@
 //
-//  STNewEntryViewController.h
+//  STEntryListViewController.h
 //  Diary
 //
 //  Created by Benjamin Shyong on 6/30/14.
@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface STNewEntryViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITextField *textField;
+@interface STEntryListViewController : UITableViewController
 
 @end
