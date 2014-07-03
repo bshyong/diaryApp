@@ -9,6 +9,7 @@
 #import "STEntryListViewController.h"
 #import "STCoreDataStack.h"
 #import "STDiaryEntry.h"
+#import "STEntryViewController.h"
 
 @interface STEntryListViewController ()<NSFetchedResultsControllerDelegate>
 
@@ -148,6 +149,21 @@
   return [sectionInfo name];
 }
 
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+  if ([segue.identifier isEqualToString:@"edit"]) {
+    UITableViewCell *cell = sender;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    UINavigationController *navigationController = segue.destinationViewController;
+    STEntryViewController *entryViewController = (STEntryViewController *)navigationController.topViewController;
+    entryViewController.entry = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+  }
+}
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -187,15 +203,6 @@
 }
 */
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

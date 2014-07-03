@@ -25,7 +25,7 @@
 		28266A2F1962035B0012A12A /* STCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 28266A2E1962035B0012A12A /* STCoreDataStack.m */; };
 		28266A35196208530012A12A /* STDiaryEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 28266A34196208530012A12A /* STDiaryEntry.m */; };
 		28266A37196252290012A12A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28266A36196252290012A12A /* MainStoryboard.storyboard */; };
-		28266A3A196253690012A12A /* STNewEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28266A39196253690012A12A /* STNewEntryViewController.m */; };
+		28266A3A196253690012A12A /* STEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28266A39196253690012A12A /* STEntryViewController.m */; };
 		28266A4019628D280012A12A /* STEntryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28266A3F19628D280012A12A /* STEntryListViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -63,8 +63,8 @@
 		28266A33196208530012A12A /* STDiaryEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STDiaryEntry.h; sourceTree = "<group>"; };
 		28266A34196208530012A12A /* STDiaryEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STDiaryEntry.m; sourceTree = "<group>"; };
 		28266A36196252290012A12A /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
-		28266A38196253690012A12A /* STNewEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNewEntryViewController.h; sourceTree = "<group>"; };
-		28266A39196253690012A12A /* STNewEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STNewEntryViewController.m; sourceTree = "<group>"; };
+		28266A38196253690012A12A /* STEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STEntryViewController.h; sourceTree = "<group>"; };
+		28266A39196253690012A12A /* STEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STEntryViewController.m; sourceTree = "<group>"; };
 		28266A3E19628D280012A12A /* STEntryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STEntryListViewController.h; path = ../STEntryListViewController.h; sourceTree = "<group>"; };
 		28266A3F19628D280012A12A /* STEntryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STEntryListViewController.m; path = ../STEntryListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,8 +138,8 @@
 				28266A0F19615D4F0012A12A /* Images.xcassets */,
 				28266A0C19615D4F0012A12A /* Diary.xcdatamodeld */,
 				28266A36196252290012A12A /* MainStoryboard.storyboard */,
-				28266A38196253690012A12A /* STNewEntryViewController.h */,
-				28266A39196253690012A12A /* STNewEntryViewController.m */,
+				28266A38196253690012A12A /* STEntryViewController.h */,
+				28266A39196253690012A12A /* STEntryViewController.m */,
 				28266A33196208530012A12A /* STDiaryEntry.h */,
 				28266A34196208530012A12A /* STDiaryEntry.m */,
 				28266A0119615D4F0012A12A /* Supporting Files */,
@@ -277,7 +277,7 @@
 				28266A2F1962035B0012A12A /* STCoreDataStack.m in Sources */,
 				28266A0E19615D4F0012A12A /* Diary.xcdatamodeld in Sources */,
 				28266A0719615D4F0012A12A /* main.m in Sources */,
-				28266A3A196253690012A12A /* STNewEntryViewController.m in Sources */,
+				28266A3A196253690012A12A /* STEntryViewController.m in Sources */,
 				28266A0B19615D4F0012A12A /* STAppDelegate.m in Sources */,
 				28266A35196208530012A12A /* STDiaryEntry.m in Sources */,
 			);

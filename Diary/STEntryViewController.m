@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 ShyongTech. All rights reserved.
 //
 
-#import "STNewEntryViewController.h"
+#import "STEntryViewController.h"
 #import "STDiaryEntry.h"
 #import "STCoreDataStack.h"
 
-@interface STNewEntryViewController ()
+@interface STEntryViewController ()
 
 @end
 
-@implementation STNewEntryViewController
+@implementation STEntryViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,7 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+  if (self.entry != nil) {
+    self.textField.text = self.entry.body;
+  }
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,9 +54,19 @@
   
 }
 
+-(void)updateDiaryEntry{
+  self.entry.body = self.textField.text;
+  STCoreDataStack *coreDataStack = [STCoreDataStack defaultStack];
+  [coreDataStack saveContext];
+}
+
 
 - (IBAction)doneWasPressed:(id)sender {
-  [self insertDiaryEntry];
+  if (self.entry != nil) {
+    [self updateDiaryEntry];
+  } else {
+     [self insertDiaryEntry];
+  }
   [self dismissSelf];
 }
 
