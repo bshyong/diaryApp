@@ -8,6 +8,7 @@
 
 #import "STTableViewCell.h"
 #import "STDiaryEntry.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface STTableViewCell()
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
@@ -55,6 +56,8 @@
   } else if (entry.mood == STDiaryEntryMoodBad) {
       self.moodImageView.image = [UIImage imageNamed:@"icn_bad"];
   }
+  
+  self.mainImageView.layer.cornerRadius = CGRectGetWidth(self.mainImageView.frame)/2.0f;
   
 }
 

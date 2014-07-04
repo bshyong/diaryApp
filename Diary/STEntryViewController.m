@@ -59,8 +59,12 @@
   [dateFormatter setDateFormat:@"EEEE, MMMM d, yyyy"];
   self.dateLabel.text = [dateFormatter stringFromDate:date];
   
+  // set the corner radius on the image button
+  self.imageButton.layer.cornerRadius = CGRectGetWidth(self.imageButton.frame)/2.0f;
+  
   // makes mood buttons appear on top of the keyboard as an input accessory view
   self.textView.inputAccessoryView = self.accessoryView;
+
 }
 
 -(void)viewWillAppear:(BOOL)animated{
