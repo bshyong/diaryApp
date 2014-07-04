@@ -11,7 +11,6 @@
 @class STDiaryEntry;
 
 @interface STEntryViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITextField *textField;
 
 @property (nonatomic, strong)STDiaryEntry *entry;
 

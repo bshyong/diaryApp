@@ -10,7 +10,11 @@
 #import "STDiaryEntry.h"
 #import "STCoreDataStack.h"
 
-@interface STEntryViewController ()
+@interface STEntryViewController () <UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+
+@property (strong, nonatomic) UIImage *pickedImage;
 @property (nonatomic, assign) enum STDiaryEntryMood pickedMood;
 @property (weak, nonatomic) IBOutlet UIButton *badButton;
 @property (weak, nonatomic) IBOutlet UIButton *averageButton;
@@ -19,6 +23,7 @@
 @property (strong, nonatomic) IBOutlet UIView *accessoryView;
 
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIButton *imageButton;
 
 @end
 
@@ -40,10 +45,12 @@
   NSDate *date;
   
   if (self.entry != nil) {
-    self.textField.text = self.entry.body;
+    self.textView.text = self.entry.body;
     self.pickedMood = self.entry.mood;
     date = [NSDate dateWithTimeIntervalSince1970:self.entry.date];
+    self.pickedImage = [UIImage imageWithData:self.entry.imageData];
   } else {
+    self.pickedImage = nil;
     self.pickedMood = STDiaryEntryMoodAverage;
     date = [NSDate date];
   }
@@ -53,7 +60,12 @@
   self.dateLabel.text = [dateFormatter stringFromDate:date];
   
   // makes mood buttons appear on top of the keyboard as an input accessory view
-  self.textField.inputAccessoryView = self.accessoryView;
+  self.textView.inputAccessoryView = self.accessoryView;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+  [super viewWillAppear:animated];
+  [self.textView becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,6 +77,8 @@
 -(void)dismissSelf{
   [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark - Override default setters
 
 -(void)setPickedMood:(enum STDiaryEntryMood)pickedMood{
   _pickedMood = pickedMood;
@@ -84,26 +98,82 @@
       self.badButton.alpha = 1.0f;
       break;
   }
-  
+}
+
+-(void)setPickedImage:(UIImage *)pickedImage{
+  _pickedImage = pickedImage;
+  if (pickedImage == nil) {
+    [self.imageButton setImage:[UIImage imageNamed:@"icn_noimage"] forState:UIControlStateNormal];
+  } else {
+    [self.imageButton setImage:pickedImage forState:UIControlStateNormal];
+  }
 }
 
 -(void)insertDiaryEntry{
   STCoreDataStack *coreDataStack = [STCoreDataStack defaultStack];
   STDiaryEntry *entry = [NSEntityDescription insertNewObjectForEntityForName:@"STDiaryEntry" inManagedObjectContext:coreDataStack.managedObjectContext];
-  entry.body = self.textField.text;
+  entry.body = self.textView.text;
   // need to calculate seconds since 1970 because
   // we are storing as scalar entries
   entry.date = [[NSDate date] timeIntervalSince1970];
+  entry.imageData = UIImageJPEGRepresentation(self.pickedImage, 0.75);
+  entry.mood = self.pickedMood;
   [coreDataStack saveContext];
   
 }
 
 -(void)updateDiaryEntry{
-  self.entry.body = self.textField.text;
+  self.entry.body = self.textView.text;
+  self.entry.imageData = UIImageJPEGRepresentation(self.pickedImage, 0.75);
+  self.entry.mood = self.pickedMood;
   STCoreDataStack *coreDataStack = [STCoreDataStack defaultStack];
   [coreDataStack saveContext];
 }
 
+#pragma mark - Image Picker prompts
+
+-(void)promptForSource{
+  UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Image Source" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Camera", @"Photo Roll", nil];
+  [actionSheet showInView:self.view];
+}
+
+-(void)promptForPhotoRoll{
+  UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+  controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+  controller.delegate = self;
+  [self presentViewController:controller animated:YES completion:nil];
+}
+
+-(void)promptForCamera{
+  UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+  controller.sourceType = UIImagePickerControllerSourceTypeCamera;
+  controller.delegate = self;
+  [self presentViewController:controller animated:YES completion:nil];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+  if (buttonIndex != actionSheet.cancelButtonIndex) {
+    if (buttonIndex != actionSheet.firstOtherButtonIndex) {
+      [self promptForCamera];
+    } else {
+      [self promptForPhotoRoll];
+    }
+  }
+}
+
+#pragma mark - Image Picker delegate actions
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+  UIImage *image = info[UIImagePickerControllerOriginalImage];
+  self.pickedImage = image;
+  [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+  [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - IBActions
 
 - (IBAction)doneWasPressed:(id)sender {
   if (self.entry != nil) {
@@ -130,6 +200,13 @@
   self.pickedMood = STDiaryEntryMoodGood;
 }
 
+- (IBAction)imageButtonWasPressed:(id)sender {
+  if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+    [self promptForSource];
+  } else {
+    [self promptForPhotoRoll];
+  }
+}
 
 /*
 #pragma mark - Navigation
