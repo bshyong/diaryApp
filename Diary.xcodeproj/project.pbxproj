@@ -30,6 +30,7 @@
 		28266A4319669DD70012A12A /* STNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28266A4219669DD70012A12A /* STNavigationController.m */; };
 		28266A461966A1740012A12A /* STTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28266A451966A1740012A12A /* STTableViewCell.m */; };
 		28266A4819676EF80012A12A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28266A4719676EF80012A12A /* QuartzCore.framework */; };
+		28266A4A196770B40012A12A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28266A49196770B40012A12A /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		28266A441966A1740012A12A /* STTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTableViewCell.h; sourceTree = "<group>"; };
 		28266A451966A1740012A12A /* STTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTableViewCell.m; sourceTree = "<group>"; };
 		28266A4719676EF80012A12A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		28266A49196770B40012A12A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28266A4A196770B40012A12A /* CoreLocation.framework in Frameworks */,
 				28266A4819676EF80012A12A /* QuartzCore.framework in Frameworks */,
 				282669FB19615D4F0012A12A /* CoreGraphics.framework in Frameworks */,
 				282669FF19615D4F0012A12A /* CoreData.framework in Frameworks */,
@@ -126,6 +129,7 @@
 		282669F719615D4F0012A12A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				28266A49196770B40012A12A /* CoreLocation.framework */,
 				28266A4719676EF80012A12A /* QuartzCore.framework */,
 				282669F819615D4F0012A12A /* Foundation.framework */,
 				282669FA19615D4F0012A12A /* CoreGraphics.framework */,

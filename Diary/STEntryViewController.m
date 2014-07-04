@@ -9,9 +9,12 @@
 #import "STEntryViewController.h"
 #import "STDiaryEntry.h"
 #import "STCoreDataStack.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface STEntryViewController () <UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface STEntryViewController () <UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate>
 
+
+@property (strong, nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @property (strong, nonatomic) UIImage *pickedImage;
@@ -19,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *badButton;
 @property (weak, nonatomic) IBOutlet UIButton *averageButton;
 @property (weak, nonatomic) IBOutlet UIButton *goodButton;
+@property (strong, nonatomic) NSString *location;
 
 @property (strong, nonatomic) IBOutlet UIView *accessoryView;
 
@@ -53,6 +57,7 @@
     self.pickedImage = nil;
     self.pickedMood = STDiaryEntryMoodAverage;
     date = [NSDate date];
+    [self loadLocation];
   }
   
   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -80,6 +85,23 @@
 
 -(void)dismissSelf{
   [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)loadLocation{
+  self.locationManager = [[CLLocationManager alloc] init];
+  self.locationManager.delegate = self;
+  self.locationManager.desiredAccuracy = 1000;
+  [self.locationManager startUpdatingLocation];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+  [self.locationManager stopUpdatingLocation];
+  CLLocation *location = [locations firstObject];
+  CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+  [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+    CLPlacemark *placemark = [placemarks firstObject];
+    self.location = placemark.name;
+  }];
 }
 
 #pragma mark - Override default setters
@@ -122,6 +144,7 @@
   entry.date = [[NSDate date] timeIntervalSince1970];
   entry.imageData = UIImageJPEGRepresentation(self.pickedImage, 0.75);
   entry.mood = self.pickedMood;
+  entry.location = self.location;
   [coreDataStack saveContext];
   
 }
