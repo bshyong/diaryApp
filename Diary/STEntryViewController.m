@@ -11,6 +11,14 @@
 #import "STCoreDataStack.h"
 
 @interface STEntryViewController ()
+@property (nonatomic, assign) enum STDiaryEntryMood pickedMood;
+@property (weak, nonatomic) IBOutlet UIButton *badButton;
+@property (weak, nonatomic) IBOutlet UIButton *averageButton;
+@property (weak, nonatomic) IBOutlet UIButton *goodButton;
+
+@property (strong, nonatomic) IBOutlet UIView *accessoryView;
+
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end
 
@@ -27,10 +35,25 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+  [super viewDidLoad];
+  
+  NSDate *date;
+  
   if (self.entry != nil) {
     self.textField.text = self.entry.body;
+    self.pickedMood = self.entry.mood;
+    date = [NSDate dateWithTimeIntervalSince1970:self.entry.date];
+  } else {
+    self.pickedMood = STDiaryEntryMoodAverage;
+    date = [NSDate date];
   }
+  
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+  [dateFormatter setDateFormat:@"EEEE, MMMM d, yyyy"];
+  self.dateLabel.text = [dateFormatter stringFromDate:date];
+  
+  // makes mood buttons appear on top of the keyboard as an input accessory view
+  self.textField.inputAccessoryView = self.accessoryView;
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,6 +64,27 @@
 
 -(void)dismissSelf{
   [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)setPickedMood:(enum STDiaryEntryMood)pickedMood{
+  _pickedMood = pickedMood;
+  
+  self.badButton.alpha = 0.5f;
+  self.goodButton.alpha = 0.5f;
+  self.averageButton.alpha = 0.5f;
+  
+  switch (pickedMood) {
+    case STDiaryEntryMoodGood:
+      self.goodButton.alpha = 1.0f;
+      break;
+    case STDiaryEntryMoodAverage:
+      self.averageButton.alpha = 1.0f;
+      break;
+    case STDiaryEntryMoodBad:
+      self.badButton.alpha = 1.0f;
+      break;
+  }
+  
 }
 
 -(void)insertDiaryEntry{
@@ -73,6 +117,19 @@
 - (IBAction)cancelWasPressed:(id)sender {
   [self dismissSelf];
 }
+
+- (IBAction)badWasPressed:(id)sender {
+  self.pickedMood = STDiaryEntryMoodBad;
+}
+
+- (IBAction)averageWasPressed:(id)sender {
+  self.pickedMood = STDiaryEntryMoodAverage;
+}
+
+- (IBAction)goodWasPressed:(id)sender {
+  self.pickedMood = STDiaryEntryMoodGood;
+}
+
 
 /*
 #pragma mark - Navigation
