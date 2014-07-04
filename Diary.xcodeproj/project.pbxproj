@@ -27,6 +27,8 @@
 		28266A37196252290012A12A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28266A36196252290012A12A /* MainStoryboard.storyboard */; };
 		28266A3A196253690012A12A /* STEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28266A39196253690012A12A /* STEntryViewController.m */; };
 		28266A4019628D280012A12A /* STEntryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28266A3F19628D280012A12A /* STEntryListViewController.m */; };
+		28266A4319669DD70012A12A /* STNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28266A4219669DD70012A12A /* STNavigationController.m */; };
+		28266A461966A1740012A12A /* STTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28266A451966A1740012A12A /* STTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,10 @@
 		28266A39196253690012A12A /* STEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STEntryViewController.m; sourceTree = "<group>"; };
 		28266A3E19628D280012A12A /* STEntryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STEntryListViewController.h; path = ../STEntryListViewController.h; sourceTree = "<group>"; };
 		28266A3F19628D280012A12A /* STEntryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STEntryListViewController.m; path = ../STEntryListViewController.m; sourceTree = "<group>"; };
+		28266A4119669DD70012A12A /* STNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNavigationController.h; sourceTree = "<group>"; };
+		28266A4219669DD70012A12A /* STNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STNavigationController.m; sourceTree = "<group>"; };
+		28266A441966A1740012A12A /* STTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTableViewCell.h; sourceTree = "<group>"; };
+		28266A451966A1740012A12A /* STTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,11 +139,15 @@
 				28266A3F19628D280012A12A /* STEntryListViewController.m */,
 				28266A0919615D4F0012A12A /* STAppDelegate.h */,
 				28266A0A19615D4F0012A12A /* STAppDelegate.m */,
+				28266A4119669DD70012A12A /* STNavigationController.h */,
+				28266A4219669DD70012A12A /* STNavigationController.m */,
 				28266A2D1962035B0012A12A /* STCoreDataStack.h */,
 				28266A2E1962035B0012A12A /* STCoreDataStack.m */,
 				28266A0F19615D4F0012A12A /* Images.xcassets */,
 				28266A0C19615D4F0012A12A /* Diary.xcdatamodeld */,
 				28266A36196252290012A12A /* MainStoryboard.storyboard */,
+				28266A441966A1740012A12A /* STTableViewCell.h */,
+				28266A451966A1740012A12A /* STTableViewCell.m */,
 				28266A38196253690012A12A /* STEntryViewController.h */,
 				28266A39196253690012A12A /* STEntryViewController.m */,
 				28266A33196208530012A12A /* STDiaryEntry.h */,
@@ -279,6 +289,8 @@
 				28266A0719615D4F0012A12A /* main.m in Sources */,
 				28266A3A196253690012A12A /* STEntryViewController.m in Sources */,
 				28266A0B19615D4F0012A12A /* STAppDelegate.m in Sources */,
+				28266A4319669DD70012A12A /* STNavigationController.m in Sources */,
+				28266A461966A1740012A12A /* STTableViewCell.m in Sources */,
 				28266A35196208530012A12A /* STDiaryEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

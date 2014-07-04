@@ -10,6 +10,7 @@
 #import "STCoreDataStack.h"
 #import "STDiaryEntry.h"
 #import "STEntryViewController.h"
+#import "STTableViewCell.h"
 
 @interface STEntryListViewController ()<NSFetchedResultsControllerDelegate>
 
@@ -84,13 +85,18 @@
   return _fetchedResultsController;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+  STDiaryEntry *entry = [self.fetchedResultsController objectAtIndexPath:indexPath];
+  return [STTableViewCell heightForEntry:entry];
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    STTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
   
     STDiaryEntry *entry = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = entry.body;
+    [cell configureCellForEntry:entry];
   
     return cell;
 }
